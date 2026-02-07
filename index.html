@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Creator • Premium AI Content</title>
-<meta name="description" content="AI-реклама, UGC и обучение нейросетям премиум уровня">
+<title>AI Creator</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -13,39 +12,42 @@
   --pink:#ff2fdc;
   --purple:#7c7cff;
   --acid:#00ffd5;
-  --bg:#07070b;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:Inter,sans-serif;
-  background:var(--bg);
   color:#fff;
+  background:#050508;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
-body::before{
-  content:"";
+/* VIDEO BACKGROUND */
+.video-bg{
   position:fixed;
   inset:0;
-  background:url('background.jpg') center/cover no-repeat;
-  opacity:.15;
-  z-index:-2;
+  z-index:-3;
+  overflow:hidden;
 }
-body::after{
+.video-bg video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.35;
+}
+.video-bg::after{
   content:"";
-  position:fixed;
+  position:absolute;
   inset:0;
-  background:linear-gradient(180deg,#07070b 10%,rgba(7,7,11,.8),#07070b 90%);
-  z-index:-1;
+  background:radial-gradient(circle at top, #1a0020, #050508 70%);
 }
 
+/* CONTAINER */
 .container{
   max-width:1100px;
   margin:auto;
-  padding:70px 20px;
+  padding:90px 20px;
 }
 
 /* HERO */
@@ -57,23 +59,40 @@ body::after{
   color:var(--pink);
   box-shadow:0 0 25px var(--pink);
   margin-bottom:25px;
-  font-weight:600;
 }
 
-h1{
-  font-size:52px;
+/* AI SCAN TEXT */
+.scan{
+  font-size:54px;
   font-weight:800;
-  margin-bottom:20px;
-  text-shadow:0 0 35px rgba(255,47,220,.4);
+  position:relative;
+  display:inline-block;
+  text-shadow:0 0 40px rgba(255,47,220,.6);
+  overflow:hidden;
+}
+.scan::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,.8) 50%,
+    transparent 100%
+  );
+  transform:translateX(-100%);
+  animation:scan 3s infinite;
+}
+@keyframes scan{
+  to{transform:translateX(100%)}
 }
 
 .lead{
   font-size:22px;
-  color:#d7d7ff;
-  max-width:720px;
+  color:#e2e2ff;
+  margin-top:20px;
 }
 
-/* BUTTON */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -83,20 +102,21 @@ h1{
   font-weight:800;
   border-radius:16px;
   text-decoration:none;
-  box-shadow:0 0 40px var(--pink);
-  position:relative;
-}
-.btn::after{
-  content:"";
-  position:absolute;
-  left:15%;right:15%;bottom:-18px;
-  height:20px;
-  background:linear-gradient(180deg,var(--pink),transparent);
-  filter:blur(14px);
+  box-shadow:0 0 45px var(--pink);
 }
 
 /* SECTIONS */
-section{margin-top:110px}
+section{
+  margin-top:130px;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s ease;
+}
+section.show{
+  opacity:1;
+  transform:none;
+}
+
 h2{
   font-size:36px;
   margin-bottom:40px;
@@ -104,49 +124,48 @@ h2{
   text-shadow:0 0 30px var(--purple);
 }
 
+/* PORTFOLIO */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+.portfolio img{
+  width:100%;
+  border-radius:24px;
+  border:1px solid var(--pink);
+  box-shadow:0 0 35px rgba(255,47,220,.6);
+  transition:.5s;
+}
+.portfolio img:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 70px rgba(255,47,220,1);
+}
+
 /* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
+  gap:30px;
 }
-
 .card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,47,220,.4);
-  padding:30px;
-  border-radius:24px;
-  backdrop-filter:blur(14px);
-  box-shadow:0 0 35px rgba(255,47,220,.15);
-  transition:.4s;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,47,220,.5);
+  padding:32px;
+  border-radius:26px;
+  box-shadow:0 0 40px rgba(255,47,220,.25);
+  transition:.5s;
 }
 .card:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 0 60px rgba(255,47,220,.4);
+  transform:translateY(-12px);
+  box-shadow:0 0 80px rgba(255,47,220,.7);
 }
 
 .price{
   font-size:30px;
-  font-weight:800;
   color:var(--acid);
-  margin-top:18px;
-}
-
-/* PORTFOLIO */
-.portfolio{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:22px;
-}
-.portfolio img{
-  width:100%;
-  border-radius:22px;
-  border:1px solid var(--pink);
-  box-shadow:0 0 30px rgba(255,47,220,.5);
-  transition:.4s;
-}
-.portfolio img:hover{
-  transform:scale(1.05);
+  font-weight:800;
+  margin-top:20px;
 }
 
 /* SOCIALS */
@@ -156,59 +175,37 @@ h2{
   gap:18px;
   justify-content:center;
 }
-
 .social{
   padding:14px 28px;
   border-radius:40px;
-  font-weight:700;
   text-decoration:none;
   color:#fff;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.25);
-  backdrop-filter:blur(12px);
-  position:relative;
+  font-weight:700;
+  border:1px solid rgba(255,255,255,.3);
+  box-shadow:0 0 25px rgba(255,255,255,.15);
   transition:.4s;
 }
 .social:hover{
-  transform:translateY(-6px) scale(1.06);
+  transform:scale(1.12);
+  box-shadow:0 0 45px var(--pink);
 }
-
-.social::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:40px;
-  opacity:0;
-  transition:.4s;
-}
-
-.instagram::after{box-shadow:0 0 35px #ff2fdc}
-.tiktok::after{box-shadow:0 0 35px #00ffd5}
-.youtube::after{box-shadow:0 0 35px red}
-.telegram::after{box-shadow:0 0 35px #3aaeff}
-.behance::after{box-shadow:0 0 35px #1769ff}
-.pinterest::after{box-shadow:0 0 35px #ff0033}
-
-.social:hover::after{opacity:1}
 
 /* FOOTER */
 footer{
-  margin-top:140px;
+  margin-top:160px;
   text-align:center;
   color:#aaa;
-  font-size:14px;
 }
 
 /* MOUSE TRAIL */
-.mouse-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
+.mouse{
   position:fixed;
-  pointer-events:none;
+  width:14px;
+  height:14px;
+  border-radius:50%;
   background:radial-gradient(circle,var(--pink),var(--acid));
-  filter:blur(2px);
-  mix-blend-mode:screen;
+  pointer-events:none;
+  filter:blur(1px);
   z-index:9999;
 }
 </style>
@@ -216,85 +213,99 @@ footer{
 
 <body>
 
+<!-- VIDEO BACKGROUND -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+</div>
+
 <div class="container">
-  <span class="badge">AI • VIDEO • UGC</span>
 
-  <h1>AI-реклама<br>под ваш бизнес</h1>
+<span class="badge">AI • VIDEO • UGC</span>
 
-  <p class="lead">
-    Создаю AI-видео и рекламу • обучаю топовым нейросетям • UGC-креатор
-  </p>
+<h1 class="scan">AI-реклама<br>под ваш бизнес</h1>
 
-  <a class="btn" href="https://t.me/aiKarinochka" target="_blank">
-    Связаться в Telegram
-  </a>
+<p class="lead">
+  AI-видео • обучение нейросетям • UGC-креатор
+</p>
 
-  <section>
-    <h2>Примеры работ</h2>
-    <div class="portfolio">
-      <img src="work1.jpg" alt="">
-      <img src="work2.jpg" alt="">
-      <img src="work3.jpg" alt="">
-    </div>
-  </section>
+<a class="btn" href="https://t.me/aiKarinochka" target="_blank">
+  Связаться в Telegram
+</a>
 
-  <section>
-    <h2>Услуги</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🎓 Обучение нейросетям</h3>
-        <p>Практика + заработок на AI-видео, рекламе и контенте.</p>
-        <div class="price">7 000 ₽</div>
-      </div>
+<section>
+<h2>Примеры работ</h2>
+<div class="portfolio">
+  <img src="work1.jpg.png">
+  <img src="work2.jpg.jpg">
+</div>
+</section>
 
-      <div class="card">
-        <h3>🎥 AI-видео и реклама</h3>
-        <p>Реклама, визуалы, AI-модели, инфлюенсеры.</p>
-        <div class="price">от 5 000 ₽</div>
-      </div>
+<section>
+<h2>Услуги</h2>
+<div class="grid">
+  <div class="card">
+    <h3>🎓 Обучение AI</h3>
+    <p>Практика + заработок</p>
+    <div class="price">7 000 ₽</div>
+  </div>
+  <div class="card">
+    <h3>🎥 AI-видео</h3>
+    <p>Реклама и визуалы</p>
+    <div class="price">от 5 000 ₽</div>
+  </div>
+  <div class="card">
+    <h3>📸 UGC</h3>
+    <p>3 видео + 5 фото</p>
+    <div class="price">от 3 000 ₽</div>
+  </div>
+</div>
+</section>
 
-      <div class="card">
-        <h3>📸 UGC-креатор</h3>
-        <p>3 видео + 5 фото под продукт.</p>
-        <div class="price">от 3 000 ₽</div>
-      </div>
-    </div>
-  </section>
+<section>
+<h2>Площадки</h2>
+<div class="socials">
+  <a class="social" href="#">Instagram</a>
+  <a class="social" href="#">TikTok</a>
+  <a class="social" href="#">YouTube</a>
+  <a class="social" href="#">Telegram</a>
+</div>
+</section>
 
-  <section>
-    <h2>Площадки</h2>
-    <div class="socials">
-      <a href="#" class="social instagram">Instagram</a>
-      <a href="#" class="social tiktok">TikTok</a>
-      <a href="#" class="social youtube">YouTube</a>
-      <a href="#" class="social telegram">Telegram</a>
-      <a href="#" class="social behance">Behance</a>
-      <a href="#" class="social pinterest">Pinterest</a>
-    </div>
-  </section>
+<footer>
+© 2026 AI Creator<br>
+Telegram: @aiKarinochka
+</footer>
 
-  <footer>
-    © 2026 AI Creator<br>
-    Telegram: @aiKarinochka • Email: karina.makeeva@yahoo.com
-  </footer>
 </div>
 
 <script>
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll("section");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting)x.target.classList.add("show");
+  });
+},{threshold:.2});
+sections.forEach(s=>obs.observe(s));
+
+/* MOUSE TRAIL */
 const dots=[];
-for(let i=0;i<20;i++){
-  const d=document.createElement('div');
-  d.className='mouse-dot';
+for(let i=0;i<16;i++){
+  const d=document.createElement("div");
+  d.className="mouse";
   document.body.appendChild(d);
   dots.push({el:d,x:0,y:0});
 }
-document.addEventListener('mousemove',e=>{
+document.addEventListener("mousemove",e=>{
   dots[0].x=e.clientX;
   dots[0].y=e.clientY;
 });
 function anim(){
   for(let i=dots.length-1;i>0;i--){
-    dots[i].x+=(dots[i-1].x-dots[i].x)*0.35;
-    dots[i].y+=(dots[i-1].y-dots[i].y)*0.35;
+    dots[i].x+=(dots[i-1].x-dots[i].x)*0.4;
+    dots[i].y+=(dots[i-1].y-dots[i].y)*0.4;
   }
   dots.forEach(d=>{
     d.el.style.transform=`translate(${d.x}px,${d.y}px)`;
@@ -306,4 +317,3 @@ anim();
 
 </body>
 </html>
-
