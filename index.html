@@ -1,121 +1,172 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI | Видео | Обучение нейросетям</title>
-  <meta name="description" content="Обучение топовым нейросетям. Генерация AI-видео, реклама, UGC-контент, личные блоги." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f0f14, #1a1a24);
-      color: #fff;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    .badge {
-      display: inline-block;
-      background: #7c7cff;
-      color: #000;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-    p.lead {
-      font-size: 20px;
-      color: #cfcfe8;
-      margin-bottom: 30px;
-    }
-    .btn {
-      display: inline-block;
-      background: #7c7cff;
-      color: #000;
-      padding: 16px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-    section {
-      margin-top: 60px;
-    }
-    h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: rgba(255,255,255,0.06);
-      padding: 24px;
-      border-radius: 16px;
-    }
-    .card h3 {
-      margin-bottom: 10px;
-    }
-    footer {
-      margin-top: 80px;
-      text-align: center;
-      color: #9a9ab5;
-      font-size: 14px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion AI Landing</title>
+
+<style>
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+color:white;
+overflow-x:hidden;
+background:black;
+}
+
+/* ===== ДВИГАЮЩИЙСЯ FASHION ФОН ===== */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle at 20% 20%, #111 0%, transparent 40%),
+radial-gradient(circle at 80% 70%, #0a0a0a 0%, transparent 40%);
+animation:moveBg 15s linear infinite;
+z-index:-2;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+50%{transform:translate(-10%,-10%);}
+100%{transform:translate(0,0);}
+}
+
+/* ===== GLASSMORPHISM КОНТЕЙНЕР ===== */
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px;
+backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+margin-top:60px;
+}
+
+/* ===== НЕОНОВЫЕ КНОПКИ ===== */
+.neon-btn{
+padding:15px 30px;
+border:none;
+color:white;
+font-size:16px;
+background:rgba(255,255,255,0.05);
+border-radius:10px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.3s;
+}
+
+.neon-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,#fff,transparent);
+opacity:0.3;
+transition:0.5s;
+}
+
+.neon-btn:hover::before{
+left:100%;
+}
+
+.neon-btn:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
+/* ===== ИНТЕРАКТИВНЫЕ КАРТОЧКИ ===== */
+.cards{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.card{
+flex:1;
+min-width:250px;
+padding:30px;
+background:rgba(255,255,255,0.04);
+border-radius:15px;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover{
+transform:scale(1.07) rotateX(5deg);
+background:rgba(255,255,255,0.08);
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ===== FASHION HEADER ===== */
+h1{
+font-size:48px;
+margin-bottom:10px;
+letter-spacing:3px;
+}
+
+.subtitle{
+opacity:0.6;
+margin-bottom:25px;
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <span class="badge">AI • Видео • UGC</span>
-    <h1>Обучение нейросетям и AI‑видео под ключ</h1>
-    <p class="lead">
-      Генерирую видео под любые запросы: реклама, личные блоги, UGC-контент.
-      Обучаю работе с топовыми нейросетями — просто и по делу.
-    </p>
-    <a class="btn" href="https://instagram.com/your_instagram" target="_blank">Написать в Instagram</a>
 
-    <section>
-      <h2>🎓 Обучение нейросетям</h2>
-      <div class="grid">
-        <div class="card">Работа с актуальными AI-инструментами</div>
-        <div class="card">Применение для бизнеса и блогов</div>
-        <div class="card">Подходит новичкам</div>
-      </div>
-    </section>
+<div class="container">
+<h1>FASHION AI</h1>
+<p class="subtitle">Luxury Digital Experience</p>
 
-    <section>
-      <h2>🎥 Генерация AI‑видео</h2>
-      <div class="grid">
-        <div class="card">Реклама и продвижение</div>
-        <div class="card">Reels / TikTok / Shorts</div>
-        <div class="card">Видео без съёмок и актёров</div>
-      </div>
-    </section>
+<button class="neon-btn">Instagram</button>
+<button class="neon-btn">Услуги</button>
 
-    <section>
-      <h2>📸 UGC‑креатор</h2>
-      <div class="grid">
-        <div class="card">Нативный AI‑контент под бренд</div>
-        <div class="card">Подходит для маркетплейсов и соцсетей</div>
-        <div class="card">Экономия времени и бюджета</div>
-      </div>
-    </section>
+<div class="cards">
+<div class="card">
+<h3>AI Дизайн</h3>
+<p>Создание luxury визуала</p>
+</div>
 
-    <footer>
-      © 2026 • AI Content Creator
-    </footer>
-  </div>
+<div class="card">
+<h3>Branding</h3>
+<p>Balenciaga style айдентика</p>
+</div>
+
+<div class="card">
+<h3>Web Fashion</h3>
+<p>Интерактивные сайты</p>
+</div>
+</div>
+</div>
+
+<script>
+// лёгкий интерактив наклона карточек
+document.querySelectorAll(".card").forEach(card=>{
+card.addEventListener("mousemove",e=>{
+let x=(e.offsetX/card.clientWidth-0.5)*10;
+let y=(e.offsetY/card.clientHeight-0.5)*-10;
+card.style.transform=`rotateX(${y}deg) rotateY(${x}deg) scale(1.07)`;
+});
+card.addEventListener("mouseleave",()=>{
+card.style.transform="scale(1)";
+});
+});
+</script>
+
 </body>
 </html>
