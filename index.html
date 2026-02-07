@@ -1,204 +1,275 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Creator | Видео • Обучение • UGC</title>
-  <meta name="description" content="Обучение нейросетям, AI-видео, реклама и UGC-контент премиум уровня" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Creator • Premium AI Content</title>
+<meta name="description" content="AI-реклама, UGC и обучение нейросетям премиум уровня">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --neon-pink:#ff2fdc;
-      --neon-purple:#7c7cff;
-      --acid:#00ffd5;
-      --bg:#07070b;
-    }
+<style>
+:root{
+  --pink:#ff2fdc;
+  --purple:#7c7cff;
+  --acid:#00ffd5;
+  --bg:#07070b;
+}
 
-    *{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:#fff;
-      line-height:1.6;
-      overflow-x:hidden;
-    }
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    /* BACKGROUND IMAGE (2nd PHOTO) */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:url('background.jpg') center/cover no-repeat;
-      opacity:0.15;
-      z-index:-2;
-    }
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('background.jpg') center/cover no-repeat;
+  opacity:.15;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,#07070b 10%,rgba(7,7,11,.8),#07070b 90%);
+  z-index:-1;
+}
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:linear-gradient(180deg,#07070b 10%,rgba(7,7,11,0.8),#07070b 90%);
-      z-index:-1;
-    }
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
 
-    .container{max-width:1100px;margin:auto;padding:60px 20px}
+/* HERO */
+.badge{
+  display:inline-block;
+  padding:8px 18px;
+  border:1px solid var(--pink);
+  border-radius:30px;
+  color:var(--pink);
+  box-shadow:0 0 25px var(--pink);
+  margin-bottom:25px;
+  font-weight:600;
+}
 
-    /* HERO */
-    .badge{
-      display:inline-block;
-      padding:8px 18px;
-      border:1px solid var(--neon-pink);
-      color:var(--neon-pink);
-      border-radius:30px;
-      box-shadow:0 0 20px var(--neon-pink);
-      margin-bottom:25px;
-      font-weight:600;
-    }
+h1{
+  font-size:52px;
+  font-weight:800;
+  margin-bottom:20px;
+  text-shadow:0 0 35px rgba(255,47,220,.4);
+}
 
-    h1{
-      font-size:48px;
-      font-weight:800;
-      margin-bottom:20px;
-      text-shadow:0 0 30px rgba(255,47,220,.4);
-    }
+.lead{
+  font-size:22px;
+  color:#d7d7ff;
+  max-width:720px;
+}
 
-    .lead{font-size:20px;color:#d7d7ff;max-width:750px}
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:40px;
+  padding:18px 36px;
+  background:linear-gradient(135deg,var(--pink),var(--acid));
+  color:#000;
+  font-weight:800;
+  border-radius:16px;
+  text-decoration:none;
+  box-shadow:0 0 40px var(--pink);
+  position:relative;
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  left:15%;right:15%;bottom:-18px;
+  height:20px;
+  background:linear-gradient(180deg,var(--pink),transparent);
+  filter:blur(14px);
+}
 
-    /* BUTTON */
-    .btn{
-      display:inline-block;
-      margin-top:35px;
-      padding:18px 34px;
-      color:#000;
-      font-weight:800;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--neon-pink),var(--acid));
-      box-shadow:0 0 35px var(--neon-pink);
-      position:relative;
-      text-decoration:none;
-    }
+/* SECTIONS */
+section{margin-top:110px}
+h2{
+  font-size:36px;
+  margin-bottom:40px;
+  color:var(--purple);
+  text-shadow:0 0 30px var(--purple);
+}
 
-    .btn::after{
-      content:"";
-      position:absolute;
-      left:10%;right:10%;bottom:-18px;height:18px;
-      background:linear-gradient(180deg,var(--neon-pink),transparent);
-      filter:blur(12px);
-    }
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
 
-    section{margin-top:100px}
+.card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,47,220,.4);
+  padding:30px;
+  border-radius:24px;
+  backdrop-filter:blur(14px);
+  box-shadow:0 0 35px rgba(255,47,220,.15);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 60px rgba(255,47,220,.4);
+}
 
-    h2{
-      font-size:34px;
-      margin-bottom:40px;
-      color:var(--neon-purple);
-      text-shadow:0 0 25px var(--neon-purple);
-    }
+.price{
+  font-size:30px;
+  font-weight:800;
+  color:var(--acid);
+  margin-top:18px;
+}
 
-    /* GRID */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+/* PORTFOLIO */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+.portfolio img{
+  width:100%;
+  border-radius:22px;
+  border:1px solid var(--pink);
+  box-shadow:0 0 30px rgba(255,47,220,.5);
+  transition:.4s;
+}
+.portfolio img:hover{
+  transform:scale(1.05);
+}
 
-    .card{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,47,220,0.4);
-      padding:30px;
-      border-radius:22px;
-      box-shadow:0 0 30px rgba(255,47,220,0.15);
-    }
+/* SOCIALS */
+.socials{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  justify-content:center;
+}
 
-    .price{
-      font-size:28px;
-      font-weight:800;
-      color:var(--acid);
-      margin-top:15px;
-    }
+.social{
+  padding:14px 28px;
+  border-radius:40px;
+  font-weight:700;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(12px);
+  position:relative;
+  transition:.4s;
+}
+.social:hover{
+  transform:translateY(-6px) scale(1.06);
+}
 
-    /* PORTFOLIO */
-    .portfolio{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-    }
+.social::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:40px;
+  opacity:0;
+  transition:.4s;
+}
 
-    .portfolio img{
-      width:100%;
-      border-radius:20px;
-      border:1px solid var(--neon-pink);
-      box-shadow:0 0 25px rgba(255,47,220,.4);
-    }
+.instagram::after{box-shadow:0 0 35px #ff2fdc}
+.tiktok::after{box-shadow:0 0 35px #00ffd5}
+.youtube::after{box-shadow:0 0 35px red}
+.telegram::after{box-shadow:0 0 35px #3aaeff}
+.behance::after{box-shadow:0 0 35px #1769ff}
+.pinterest::after{box-shadow:0 0 35px #ff0033}
 
-    /* FOOTER */
-    footer{
-      margin-top:120px;
-      text-align:center;
-      color:#aaa;
-      font-size:14px;
-    }
+.social:hover::after{opacity:1}
 
-    .icons img{height:36px;margin:10px;filter:drop-shadow(0 0 8px var(--neon-pink))}
+/* FOOTER */
+footer{
+  margin-top:140px;
+  text-align:center;
+  color:#aaa;
+  font-size:14px;
+}
 
-  </style>
+/* MOUSE TRAIL */
+.mouse-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  background:radial-gradient(circle,var(--pink),var(--acid));
+  filter:blur(2px);
+  mix-blend-mode:screen;
+  z-index:9999;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
   <span class="badge">AI • VIDEO • UGC</span>
-  <h1>Премиум AI‑контент <br>и обучение нейросетям</h1>
-  <p class="lead">
-    Генерирую AI‑видео, рекламу, UGC и обучаю работе с топовыми нейросетями.
-    Дорого, стильно, эффективно. Без съёмок и лишних затрат.
-  </p>
-  <a class="btn" href="https://t.me/aiKarinochka" target="_blank">Связаться в Telegram</a>
 
-  <!-- PORTFOLIO -->
+  <h1>AI-реклама<br>под ваш бизнес</h1>
+
+  <p class="lead">
+    Создаю AI-видео и рекламу • обучаю топовым нейросетям • UGC-креатор
+  </p>
+
+  <a class="btn" href="https://t.me/aiKarinochka" target="_blank">
+    Связаться в Telegram
+  </a>
+
   <section>
     <h2>Примеры работ</h2>
     <div class="portfolio">
-      <!-- ЗАМЕНИ НА СВОИ ФОТО -->
-      <img src="work1.jpg" alt="AI work">
-      <img src="work2.jpg" alt="AI work">
-      <img src="work3.jpg" alt="AI work">
+      <img src="work1.jpg" alt="">
+      <img src="work2.jpg" alt="">
+      <img src="work3.jpg" alt="">
     </div>
   </section>
 
-  <!-- PRICES -->
   <section>
-    <h2>Услуги и расценки</h2>
+    <h2>Услуги</h2>
     <div class="grid">
       <div class="card">
         <h3>🎓 Обучение нейросетям</h3>
-        <p>5 онлайн‑уроков в созвоне. Практика сразу. Покажу, как зарабатывать на AI‑рекламе и видео.</p>
-        <p>Видео, реклама, мини‑фильмы, баннеры, нейрофотосессии, AI‑аватары, музыка.</p>
+        <p>Практика + заработок на AI-видео, рекламе и контенте.</p>
         <div class="price">7 000 ₽</div>
       </div>
 
       <div class="card">
-        <h3>🎥 Генерация AI‑видео</h3>
-        <p>Реклама, визуалы, логотипы, музыка, AI‑модели и инфлюенсеры под любой запрос.</p>
+        <h3>🎥 AI-видео и реклама</h3>
+        <p>Реклама, визуалы, AI-модели, инфлюенсеры.</p>
         <div class="price">от 5 000 ₽</div>
       </div>
 
       <div class="card">
-        <h3>📸 UGC‑креатор</h3>
-        <p>Реалистичная эмоциональная реклама продукта.</p>
-        <p>3 мини‑видео + 5 фото.</p>
+        <h3>📸 UGC-креатор</h3>
+        <p>3 видео + 5 фото под продукт.</p>
         <div class="price">от 3 000 ₽</div>
       </div>
     </div>
   </section>
 
-  <!-- PLATFORMS -->
   <section>
     <h2>Площадки</h2>
-    <div class="icons">
-      <img src="icons/instagram.svg" alt="Instagram">
-      <img src="icons/tiktok.svg" alt="TikTok">
-      <img src="icons/youtube.svg" alt="YouTube">
-      <img src="icons/telegram.svg" alt="Telegram">
+    <div class="socials">
+      <a href="#" class="social instagram">Instagram</a>
+      <a href="#" class="social tiktok">TikTok</a>
+      <a href="#" class="social youtube">YouTube</a>
+      <a href="#" class="social telegram">Telegram</a>
+      <a href="#" class="social behance">Behance</a>
+      <a href="#" class="social pinterest">Pinterest</a>
     </div>
   </section>
 
@@ -208,7 +279,31 @@
   </footer>
 </div>
 
+<script>
+const dots=[];
+for(let i=0;i<20;i++){
+  const d=document.createElement('div');
+  d.className='mouse-dot';
+  document.body.appendChild(d);
+  dots.push({el:d,x:0,y:0});
+}
+document.addEventListener('mousemove',e=>{
+  dots[0].x=e.clientX;
+  dots[0].y=e.clientY;
+});
+function anim(){
+  for(let i=dots.length-1;i>0;i--){
+    dots[i].x+=(dots[i-1].x-dots[i].x)*0.35;
+    dots[i].y+=(dots[i-1].y-dots[i].y)*0.35;
+  }
+  dots.forEach(d=>{
+    d.el.style.transform=`translate(${d.x}px,${d.y}px)`;
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+</script>
+
 </body>
 </html>
-
 
