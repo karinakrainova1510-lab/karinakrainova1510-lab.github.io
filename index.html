@@ -61,7 +61,7 @@ body{
   margin-bottom:25px;
 }
 
-/* AI SCAN TEXT */
+/* AI SCAN */
 .scan{
   font-size:54px;
   font-weight:800;
@@ -77,7 +77,7 @@ body{
   background:linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,.8) 50%,
+    rgba(255,255,255,.9) 50%,
     transparent 100%
   );
   transform:translateX(-100%);
@@ -124,22 +124,22 @@ h2{
   text-shadow:0 0 30px var(--purple);
 }
 
-/* PORTFOLIO */
+/* PORTFOLIO VIDEO */
 .portfolio{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:26px;
 }
-.portfolio img{
+.portfolio video{
   width:100%;
   border-radius:24px;
   border:1px solid var(--pink);
   box-shadow:0 0 35px rgba(255,47,220,.6);
   transition:.5s;
 }
-.portfolio img:hover{
+.portfolio video:hover{
   transform:scale(1.08);
-  box-shadow:0 0 70px rgba(255,47,220,1);
+  box-shadow:0 0 80px rgba(255,47,220,1);
 }
 
 /* CARDS */
@@ -216,7 +216,7 @@ footer{
 <!-- VIDEO BACKGROUND -->
 <div class="video-bg">
   <video autoplay muted loop playsinline>
-    <source src="bg.mp4" type="video/mp4">
+    <source src="work1.mp4" type="video/mp4">
   </video>
 </div>
 
@@ -237,8 +237,10 @@ footer{
 <section>
 <h2>Примеры работ</h2>
 <div class="portfolio">
-  <img src="work1.jpg.png">
-  <img src="work2.jpg.jpg">
+  <video src="work1.mp4" autoplay muted loop playsinline></video>
+  <video src="work2.mp4" autoplay muted loop playsinline></video>
+  <video src="work3.mp4" autoplay muted loop playsinline></video>
+  <video src="work4.mp4" autoplay muted loop playsinline></video>
 </div>
 </section>
 
@@ -317,3 +319,4 @@ anim();
 
 </body>
 </html>
+
